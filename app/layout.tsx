@@ -1,15 +1,28 @@
-import StoreProvider from "@/lib/StoreProvider";
+import type { Metadata } from "next";
+import ReduxProvider from './ReduxProvider';
+import { Inter } from 'next/font/google';
 
-export const metadata = {
-  title: "Next.js Redux Cart",
+import "@/styles/globals.css"
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Shopping Cart',
+  description: 'Modern shopping cart with Redux Toolkit',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  
   return (
     <html lang="en">
       <body>
-        <StoreProvider>{children}</StoreProvider>
-      </body>
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
+    </body>
     </html>
-  );
+  )
 }
